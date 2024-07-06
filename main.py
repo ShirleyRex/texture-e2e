@@ -14,7 +14,11 @@ from onboarding.test_onboarding import (test_request_invite_code_valid_email, te
 
 from sign_in.test_sign_in import (test_sign_in_with_valid_credentials, test_invalid_email_format, test_incorrect_password,
                                   test_empty_email_field, test_empty_password_field, test_empty_email_and_password_fields,
-                                  test_email_with_spaces, test_password_visibility_toggle, test_broken_sign_in_button,)
+                                  test_email_with_spaces, test_password_visibility_toggle, test_broken_sign_in_button,
+                                  test_unresponsive_sign_in_button, test_sign_up_link, test_broken_sign_up_link,
+                                  test_unresponsive_sign_up_link, test_sign_in_page_load_time, test_broken_images_on_sign_in_page,
+                                  test_sign_in_page_accessibility, test_email_with_special_characters, test_password_with_special_characters,
+                                  test_remember_me_functionality, test_sign_in_with_non_existent_account)
 
 
 def driver():
@@ -44,4 +48,15 @@ if __name__ == "__main__":
     # test_empty_email_and_password_fields(driver())
     # test_email_with_spaces(driver())
     # test_password_visibility_toggle(driver())
-    test_broken_sign_in_button(driver())
+    # test_broken_sign_in_button(driver())
+    # test_unresponsive_sign_in_button(driver())
+    # test_sign_up_link(driver())
+    # test_broken_sign_up_link(driver())
+    # test_unresponsive_sign_up_link(driver())
+    # test_sign_in_page_load_time(driver())
+    # test_broken_images_on_sign_in_page(driver())
+    # test_sign_in_page_accessibility(driver())
+    # test_email_with_special_characters(driver())
+    # test_password_with_special_characters(driver())
+    # test_remember_me_functionality(driver())
+    test_sign_in_with_non_existent_account(driver())
