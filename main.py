@@ -5,13 +5,17 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import time
 from onboarding.test_onboarding import (test_request_invite_code_valid_email, test_request_invite_code_invalid_email,
-                                        test_request_invite_code_empty_email, test_sign_in_link, test_broken_sign_in_link,
+                                        test_request_invite_code_empty_email, test_sign_in_link,
+                                        test_broken_sign_in_link,
                                         test_invite_code_page_load_time, test_invite_code_page_accessibility,
                                         test_confirmation_message, test_sign_in_link_from_confirmation,
                                         test_broken_sign_in_link_on_confirmation, test_email_receipt_of_invite_code,
                                         test_confirmation_page_load_time, test_confirmation_page_accessibility)
 
-from sign_in.test_sign_in import (test_sign_in_with_valid_credentials, test_invalid_email_format)
+from sign_in.test_sign_in import (test_sign_in_with_valid_credentials, test_invalid_email_format, test_incorrect_password,
+                                  test_empty_email_field, test_empty_password_field, test_empty_email_and_password_fields,
+                                  test_email_with_spaces, test_password_visibility_toggle, test_broken_sign_in_button,)
+
 
 def driver():
     driver = setup_driver()
@@ -20,18 +24,24 @@ def driver():
 
 
 if __name__ == "__main__":
-    #test_request_invite_code_valid_email(driver())
-    #test_request_invite_code_invalid_email(driver())
-    #test_request_invite_code_empty_email(driver())
-    #test_broken_sign_in_link(driver())
-    #test_invite_code_page_load_time(driver())
-    #test_invite_code_page_accessibility(driver())
-    #test_confirmation_message(driver())
-    #test_sign_in_link_from_confirmation(driver())
-    #test_broken_sign_in_link_on_confirmation(driver())
-    #test_email_receipt_of_invite_code(driver())
-    #test_confirmation_page_load_time(driver())
-    #test_confirmation_page_accessibility(driver())
-    test_sign_in_with_valid_credentials(driver())
-    #test_invalid_email_format(driver())
-
+    # test_request_invite_code_valid_email(driver())
+    # test_request_invite_code_invalid_email(driver())
+    # test_request_invite_code_empty_email(driver())
+    # test_broken_sign_in_link(driver())
+    # test_invite_code_page_load_time(driver())
+    # test_invite_code_page_accessibility(driver())
+    # test_confirmation_message(driver())
+    # test_sign_in_link_from_confirmation(driver())
+    # test_broken_sign_in_link_on_confirmation(driver())
+    # test_email_receipt_of_invite_code(driver())
+    # test_confirmation_page_load_time(driver())
+    # test_confirmation_page_accessibility(driver())
+    # test_sign_in_with_valid_credentials(driver())
+    # test_invalid_email_format(driver())
+    # test_incorrect_password(driver())
+    # test_empty_email_field(driver())
+    # test_empty_password_field(driver())
+    # test_empty_email_and_password_fields(driver())
+    # test_email_with_spaces(driver())
+    # test_password_visibility_toggle(driver())
+    test_broken_sign_in_button(driver())
