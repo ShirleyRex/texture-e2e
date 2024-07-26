@@ -12,13 +12,21 @@ from onboarding.test_onboarding import (test_request_invite_code_valid_email, te
                                         test_broken_sign_in_link_on_confirmation, test_email_receipt_of_invite_code,
                                         test_confirmation_page_load_time, test_confirmation_page_accessibility)
 
-from sign_in.test_sign_in import (test_sign_in_with_valid_credentials, test_invalid_email_format, test_incorrect_password,
-                                  test_empty_email_field, test_empty_password_field, test_empty_email_and_password_fields,
+from onboarding.test_onboarding_return import (test_select_hair_type)
+
+from sign_in.test_sign_in import (test_sign_in_with_valid_credentials, test_invalid_email_format,
+                                  test_incorrect_password,
+                                  test_empty_email_field, test_empty_password_field,
+                                  test_empty_email_and_password_fields,
                                   test_email_with_spaces, test_password_visibility_toggle, test_broken_sign_in_button,
                                   test_unresponsive_sign_in_button, test_sign_up_link, test_broken_sign_up_link,
-                                  test_unresponsive_sign_up_link, test_sign_in_page_load_time, test_broken_images_on_sign_in_page,
-                                  test_sign_in_page_accessibility, test_email_with_special_characters, test_password_with_special_characters,
+                                  test_unresponsive_sign_up_link, test_sign_in_page_load_time,
+                                  test_broken_images_on_sign_in_page,
+                                  test_sign_in_page_accessibility, test_email_with_special_characters,
+                                  test_password_with_special_characters,
                                   test_remember_me_functionality, test_sign_in_with_non_existent_account)
+
+from user_feed.test_user_feed import (test_feed_page_load_time, test_like_post, test_feed_page_accessibility)
 
 
 def driver():
@@ -59,4 +67,8 @@ if __name__ == "__main__":
     # test_email_with_special_characters(driver())
     # test_password_with_special_characters(driver())
     # test_remember_me_functionality(driver())
-    test_sign_in_with_non_existent_account(driver())
+    # test_sign_in_with_non_existent_account(driver())
+    # test_select_hair_type(driver())
+    # test_feed_page_load_time(driver())
+    test_like_post(driver())
+    # test_feed_page_accessibility(driver())

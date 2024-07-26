@@ -2,20 +2,15 @@ import time
 
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
+from utils.functions import sign_in, get_valid_credentials
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
 
 def test_sign_in_with_valid_credentials(driver):
-    driver.get("http://localhost:3000/sign-in")
-    email_input = driver.find_element(By.TAG_NAME, "input").send_keys("shirley.abaegbu@gmail.com")
-    time.sleep(2)
-    password_input = driver.find_elements(By.TAG_NAME, "input")[1].send_keys("@Testtexture24")
-    time.sleep(2)
-    request_button = driver.find_elements(By.TAG_NAME, "button")[1].click()
-    time.sleep(5)
-    # assert profile_url in driver.current_url
+    url, email, password = get_valid_credentials()
+    sign_in(driver, url, email, password, should_sleep=True)
 
 
 def test_invalid_email_format(driver):
