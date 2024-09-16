@@ -1,7 +1,9 @@
 import time
 from selenium.webdriver.common.by import By
 
-
+base_url = "https://staging.mytexturecare.com/"
+email = "shirley.abaegbu@gmail.com"
+password = "@Testtexture24"
 def sign_in(driver, url, email, password, should_sleep=False):
     driver.get(url)
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys(email)
@@ -16,8 +18,4 @@ def sign_in(driver, url, email, password, should_sleep=False):
 
 
 def get_valid_credentials():
-    url = "http://localhost:3000/sign-in"
-    email = "shirley.abaegbu@gmail.com"
-    password = "@Testtexture24"
-
-    return url, email, password
+    return base_url, email, password

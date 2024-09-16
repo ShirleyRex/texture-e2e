@@ -1,41 +1,43 @@
 import time
 from selenium.webdriver.common.by import By
+from utils.functions import base_url, email
 
 
 def test_request_invite_code_valid_email(driver):
-    driver.get("http://localhost:3000/Onboarding")
-    email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
+    driver.get(base_url + "onboarding")
+    driver.find_element(By.TAG_NAME, "input").send_keys(email)
     time.sleep(5)
-    request_button = driver.find_element(By.TAG_NAME, "button").click()
+    driver.find_element(By.TAG_NAME, "button").click()
     time.sleep(5)
-    # assert "Confirmation message" in driver.page_source
+    assert "Invite code has been successfully sent!" in driver.page_source
 
 
 def test_request_invite_code_invalid_email(driver):
-    driver.get("http://localhost:3000/Onboarding")
+
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("invalidemail")
     time.sleep(5)
     request_button = driver.find_element(By.TAG_NAME, "button").click()
     time.sleep(5)
-    # assert "Invalid email format" in driver.page_source
+    assert "Get invite code" in driver.page_source
 
 
 def test_request_invite_code_empty_email(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     request_button = driver.find_element(By.TAG_NAME, "button").click()
     time.sleep(5)
     # assert "Email is required" in driver.page_source
 
 
 def test_sign_in_link(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     driver.find_element(By.LINK_TEXT, "Sign in!").click()
     time.sleep(5)
     # assert "Texture Hair" in driver.title
 
 
 def test_broken_sign_in_link(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     driver.find_element(By.LINK_TEXT, "Sign in!").click()
     time.sleep(10)
     # assert "404" not in driver.title
@@ -43,13 +45,13 @@ def test_broken_sign_in_link(driver):
 
 def test_invite_code_page_load_time(driver):
     start_time = time.time()
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     load_time = time.time() - start_time
     assert load_time < 5
 
 
 def test_invite_code_page_accessibility(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     input_elements = driver.find_elements(By.TAG_NAME, "input")
     email_input = input_elements[0]
     assert email_input.is_displayed(), "Email input field is not displayed"
@@ -57,7 +59,7 @@ def test_invite_code_page_accessibility(driver):
 
 
 def test_confirmation_message(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     time.sleep(5)
     request_button = driver.find_element(By.TAG_NAME, "button").click()
@@ -66,7 +68,7 @@ def test_confirmation_message(driver):
 
 
 def test_sign_in_link_from_confirmation(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     time.sleep(5)
     request_button = driver.find_element(By.TAG_NAME, "button").click()
@@ -77,7 +79,7 @@ def test_sign_in_link_from_confirmation(driver):
 
 
 def test_broken_sign_in_link_on_confirmation(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     time.sleep(5)
     request_button = driver.find_element(By.TAG_NAME, "button").click()
@@ -88,7 +90,7 @@ def test_broken_sign_in_link_on_confirmation(driver):
 
 
 def test_email_receipt_of_invite_code(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     time.sleep(5)
     request_button = driver.find_element(By.TAG_NAME, "button").click()
@@ -97,7 +99,7 @@ def test_email_receipt_of_invite_code(driver):
 
 
 def test_confirmation_page_load_time(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     start_time = time.time()
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     request_button = driver.find_element(By.TAG_NAME, "button").click()
@@ -107,7 +109,7 @@ def test_confirmation_page_load_time(driver):
 
 
 def test_confirmation_page_accessibility(driver):
-    driver.get("http://localhost:3000/Onboarding")
+    driver.get(base_url + "onboarding")
     email_input = driver.find_element(By.TAG_NAME, "input").send_keys("validemail@example.com")
     request_button = driver.find_element(By.TAG_NAME, "button").click()
     time.sleep(2)

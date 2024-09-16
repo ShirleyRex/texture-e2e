@@ -2,23 +2,31 @@ import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from utils.functions import base_url
 
+
+# def test_select_hair_type(driver):
+#     driver.get(base_url + "onboarding/:invite_code")
+#     time.sleep(5)
+#     WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".hidden.peer.CurlyQATEST")))
+#     # # print(label, "ppppp")
+#
+#     # hair_type = driver.find_elements(By.TAG_NAME, "input")[0].click()
+#     # time.sleep(5)
+#     # checkbox = driver.find_element(By.XPATH, f"//input[@name='{hair_type}']")
+#     continue_button = driver.find_elements(By.TAG_NAME, "button")[0].click()
+#     time.sleep(5)
+#
+#     # # assert checkbox.is_selected(), f"{hair_type} checkbox should be selected"
+#     # # assert "Next step" in driver.title
 
 def test_select_hair_type(driver):
-    driver.get("http://localhost:3000/onboarding/:invite_code")
-    time.sleep(10)
-    WebDriverWait(driver, 10).until( EC.element_to_be_clickable((By.CSS_SELECTOR, ".hidden.peer.CurlyQATEST")))
-    # print(label, "ppppp")
-    time.sleep(5)
-
-    # hair_type = driver.find_elements(By.TAG_NAME, "input")[0].click()
-    # time.sleep(5)
-    # checkbox = driver.find_element(By.XPATH, f"//input[@name='{hair_type}']")
-    # # continue_button = driver.find_elements(By.TAG_NAME, "button")[0].click()
-    # time.sleep(5)
-    # # assert checkbox.is_selected(), f"{hair_type} checkbox should be selected"
-    # # assert "Next step" in driver.title
-
+    driver.get(base_url + "onboarding/:invite_code")
+    hair_type = driver.find_elements(By.TAG_NAME, "input")[0].click()
+    time.sleep(2)
+    continue_button = driver.find_elements(By.TAG_NAME, "button")[0].click()
+    time.sleep(2)
+    assert "Next step" in driver.title
 
 def test_multiple_hair_type_selections(driver):
     driver.get("http://localhost:3000/HairTypeSelection")
